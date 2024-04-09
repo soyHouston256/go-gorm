@@ -11,11 +11,10 @@ func main() {
 	driver := storage.Mysql
 	storage.New(driver)
 
-	product := make([]model.Product, 0)
+	product := model.Product{}
 
-	storage.DB().Find(&product)
+	storage.DB().First(&product, 1)
 
-	for _, p := range product {
-		fmt.Printf("ID: %d - %s\n", p.ID, p.Name)
-	}
+	fmt.Println(product)
+
 }
