@@ -14,7 +14,7 @@ func main() {
 	product := model.Product{}
 	product.ID = 1
 
-	storage.DB().Delete(&product)
+	storage.DB().Unscoped().Delete(&product)
 
 	fmt.Println(product)
 
