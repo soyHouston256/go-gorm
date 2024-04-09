@@ -14,12 +14,7 @@ func main() {
 	product := model.Product{}
 	product.ID = 1
 
-	storage.DB().Model(&product).Updates(
-		model.Product{
-			Price: 150,
-			Name:  "Course og big O Notation",
-		},
-	)
+	storage.DB().Delete(&product)
 
 	fmt.Println(product)
 
