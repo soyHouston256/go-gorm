@@ -12,8 +12,14 @@ func main() {
 	storage.New(driver)
 
 	product := model.Product{}
+	product.ID = 1
 
-	storage.DB().First(&product, 1)
+	storage.DB().Model(&product).Updates(
+		model.Product{
+			Price: 150,
+			Name:  "Course og big O Notation",
+		},
+	)
 
 	fmt.Println(product)
 
