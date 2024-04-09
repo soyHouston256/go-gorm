@@ -1,8 +1,6 @@
 package main
 
 import (
-	"fmt"
-
 	"github.com/soyhouston256/go-gorm/model"
 	"github.com/soyhouston256/go-gorm/storage"
 )
@@ -14,8 +12,20 @@ func main() {
 	product := model.Product{}
 	product.ID = 1
 
-	storage.DB().Unscoped().Delete(&product)
-
-	fmt.Println(product)
-
+	invoice := model.InvoiceHeader{
+		Client: "Max Houston Ramirez",
+		InvoiceItems: []model.InvoiceItem{
+			{
+				ProductID: 2,
+				Quantity:  2,
+				Price:     100,
+			},
+			{
+				ProductID: 3,
+				Quantity:  2,
+				Price:     100,
+			},
+		},
+	}
+	storage.DB().Create(&invoice)
 }
